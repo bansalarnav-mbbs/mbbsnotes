@@ -49,31 +49,7 @@ function changeHeroText() {
 }
 
 setInterval(changeHeroText, 3000);
-
-
-// ================= SCROLL BACKGROUND ANIMATION (HOME ONLY) =================
-const homeSection = document.querySelector(".home");
-
-function updateBackground(scroll) {
-    if (!homeSection) return;
-
-    // Stop animation in dark mode
-    if (document.body.classList.contains("dark")) return;
-
-    let maxScroll = homeSection.offsetHeight;
-
-    // SAFE calculation (no negative / no division errors)
-    let progress = Math.min(scroll / maxScroll, 1);
-
-    // Smooth colors (stable)
-    let color1 = `rgba(255, 218, 180, ${1 - progress})`; // peach
-    let color2 = `rgba(188, 216, 236, ${0.8 + progress * 0.2})`; // blue
-    let color3 = `rgba(220, 204, 236, ${0.7 + progress * 0.3})`; // purple
-
-    homeSection.style.background =
-        `linear-gradient(135deg, ${color1}, ${color2}, ${color3})`;
-}
-
+    
 
 // ================= FADE ANIMATION =================
 const faders = document.querySelectorAll(".fade-up");
@@ -89,23 +65,6 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer) {
 
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
-});
-
-
-// ================= SCROLL HANDLER =================
-let ticking = false;
-
-window.addEventListener("scroll", function () {
-    let scroll = window.scrollY;
-
-    if (!ticking) {
-        window.requestAnimationFrame(function () {
-            updateBackground(scroll);
-            ticking = false;
-        });
-
-        ticking = true;
-    }
 });
 
  // RUN ON LOAD (IMPORTANT FIX)
