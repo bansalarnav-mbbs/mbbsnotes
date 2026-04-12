@@ -124,7 +124,7 @@ text-align: center;
 
 /* ================= HOME ================= */
 .home {
-min-height: 150vh;
+min-height: 120vh; /* FIXED */
 padding: 60px 20px;
 background: linear-gradient(135deg, var(--peach), var(--blue), var(--purple));
 transition: background 0.5s ease;
