@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #fdf6ec;
+    color: #333;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff;
+    position: sticky;
+    top: 0;
+}
+
+nav h2 {
+    font-family: 'Patrick Hand', cursive;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+}
+
+/* SECTIONS */
+.section {
+    padding: 60px 20px;
+}
+
+/* HOME */
+.home {
+    text-align: center;
+    background: #e8f0f7;
+}
+
+.home h1 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 3rem;
+}
+
+/* ABOUT */
+.card {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+    gap: 20px;
+}
+
+.card img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.note-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+}
+
+.note-card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #4a90e2;
+}
+
+/* SOCIAL */
+.socials {
+    text-align: center;
+}
+
+.socials a {
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.socials a:hover {
+    color: #4a90e2;
+}
+
+/* ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
