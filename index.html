@@ -1,89 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MBBS Handwritten Notes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@300;500;700&family=Open+Sans&display=swap" rel="stylesheet">
+<title>MBBS Notes</title>
 
-    <link rel="stylesheet" href="style.css">
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Kalam&family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- NAVBAR -->
-<nav>
+<nav class="navbar">
     <h2>MBBS Notes</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#content">Notes</a></li>
-        <li><a href="#follow">Follow</a></li>
-    </ul>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#content">Notes</a>
+        <a href="#follow">Follow</a>
+    </div>
+
+    <button id="darkToggle">🌙</button>
 </nav>
 
 <!-- HOME -->
 <section id="home" class="section home">
-    <h1 class="fade-in">MBBS Handwritten Notes</h1>
-    <p class="fade-in">Simple. Clean. Conceptual learning for medical students.</p>
+    <h1 id="changingText">MBBS Handwritten Notes</h1>
+    <p>Simple. Clean. Concept-based learning.</p>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section">
-    <div class="card fade-in">
-        <img src="profile.jpg" alt="Profile">
+    <div class="card">
+        <img src="https://via.placeholder.com/150" alt="profile">
         <div>
             <h2>About Me</h2>
-            <p>
-                Hi, I’m a medical student sharing my handwritten MBBS notes 
-                to make learning simple and effective. These notes are concise,
-                exam-oriented, and easy to revise.
-            </p>
+            <p>I am a medical student sharing my handwritten notes to simplify MBBS learning.</p>
         </div>
     </div>
 </section>
 
 <!-- CONTENT -->
 <section id="content" class="section">
-    <h2 class="center">Subjects</h2>
+    <h2>Subjects</h2>
+
     <div class="grid">
-
-        <div class="note-card fade-in">
-            <h3>Anatomy</h3>
-            <a href="#">View Notes</a>
-        </div>
-
-        <div class="note-card fade-in">
-            <h3>Physiology</h3>
-            <a href="#">View Notes</a>
-        </div>
-
-        <div class="note-card fade-in">
-            <h3>Biochemistry</h3>
-            <a href="#">View Notes</a>
-        </div>
-
-        <div class="note-card fade-in">
-            <h3>Pathology</h3>
-            <a href="#">View Notes</a>
-        </div>
-
-        <div class="note-card fade-in">
-            <h3>Pharmacology</h3>
-            <a href="#">View Notes</a>
-        </div>
-
+        <div class="note-card"><h3>Anatomy</h3></div>
+        <div class="note-card"><h3>Physiology</h3></div>
+        <div class="note-card"><h3>Biochemistry</h3></div>
+        <div class="note-card"><h3>Pathology</h3></div>
     </div>
 </section>
 
 <!-- FOLLOW -->
 <section id="follow" class="section">
-    <h2 class="center">Follow Me</h2>
+    <h2>Follow Me</h2>
+
     <div class="socials">
         <a href="#">Instagram</a>
         <a href="#">LinkedIn</a>
-        <a href="#">YouTube</a>
     </div>
 </section>
 
