@@ -1,12 +1,19 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnav Bansal</title><!-- GOOGLE FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Kalam&family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Arnav Bansal</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">
 
-</head><body><!-- NAVBAR -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
 <nav class="navbar glass">
     <div class="nav-container">
 
@@ -18,8 +25,10 @@
             <div class="hamburger" id="hamburger">☰</div>
         </div>
 
-        <!-- NAV LINKS -->
+        <!-- NAV LINKS (MOBILE DROPDOWN FIX READY) -->
         <div class="nav-links" id="navLinks">
+            <div class="close-menu" id="closeMenu">✕</div>
+
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#content">Notes</a>
@@ -28,7 +37,6 @@
 
     </div>
 </nav>
-
 
 <!-- HOME -->
 <section id="home" class="section home bg1">
@@ -39,7 +47,7 @@
         <p id="scrollSub">Understand Concepts. Revise Faster. Ace your exams.</p>
     </div>
 
-    <!-- 2x2 GRID -->
+    <!-- GRID -->
     <div class="home-grid">
 
         <div class="grid-card fade-up" onclick="openPage('frames.html')">
@@ -66,26 +74,28 @@
 
 </section>
 
-
 <!-- ABOUT -->
 <section id="about" class="section">
     <div class="container">
 
-        <div class="card fade-up">
-            <img src="profile.jpg" alt="Arnav Bansal Profile Photo" loading="lazy">
+        <div class="card fade-up about-card">
 
-            <div>
+            <!-- PROFILE FIX -->
+            <img src="profile.jpg" alt="Arnav Bansal Profile Photo" class="profile-img" loading="lazy">
+
+            <div class="about-content">
                 <h2 class="section-title">About Me</h2>
+
                 <p class="about-text">
                     I’m a medical student passionate about simplifying complex concepts into clear, handwritten notes.
                     This platform is my effort to make MBBS learning more accessible, structured, and student-friendly.
                 </p>
             </div>
+
         </div>
 
     </div>
 </section>
-
 
 <!-- CONTENT -->
 <section id="content" class="section">
@@ -94,15 +104,26 @@
         <h2>Subjects</h2>
 
         <div class="grid">
+
             <div class="note-card"><h3>Anatomy</h3></div>
             <div class="note-card"><h3>Physiology</h3></div>
             <div class="note-card"><h3>Biochemistry</h3></div>
             <div class="note-card"><h3>Pathology</h3></div>
+            <div class="note-card"><h3>Pharmacology</h3></div>
+            <div class="note-card"><h3>Microbiology</h3></div>
+            <div class="note-card"><h3>Forensic Medicine</h3></div>
+            <div class="note-card"><h3>PSM</h3></div>
+            <div class="note-card"><h3>ENT</h3></div>
+            <div class="note-card"><h3>Ophthalmology</h3></div>
+            <div class="note-card"><h3>Medicine</h3></div>
+            <div class="note-card"><h3>Obs & Gynae</h3></div>
+            <div class="note-card"><h3>Surgery</h3></div>
+            <div class="note-card"><h3>Pediatrics</h3></div>
+
         </div>
 
     </div>
 </section>
-
 
 <!-- FOLLOW -->
 <section id="follow" class="section">
@@ -110,6 +131,7 @@
 
         <h2>Follow Me</h2>
 
+        <!-- FLEX FIX READY -->
         <div class="socials">
             <a href="https://www.instagram.com/bansal.arnav?igsh=b2tibHVwazJ1dWsw" target="_blank">Instagram</a>
             <a href="#">LinkedIn</a>
@@ -117,7 +139,6 @@
 
     </div>
 </section>
-
 
 <!-- SCROLL TOP -->
 <button id="scrollTop">↑</button>
