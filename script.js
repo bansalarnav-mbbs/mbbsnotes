@@ -57,13 +57,16 @@ const homeSection = document.querySelector(".home");
 function updateBackground(scroll) {
     if (!homeSection) return;
 
+    // STOP animation in dark mode
+    if (document.body.classList.contains("dark")) return;
+
     let maxScroll = homeSection.offsetHeight;
     let progress = Math.min(scroll / maxScroll, 1);
 
-    // Interpolating colors
-    let color1 = `hsl(${200 + progress * 50}, 60%, 85%)`;
-    let color2 = `hsl(${260 + progress * 40}, 60%, 85%)`;
-    let color3 = `hsl(${30 + progress * 20}, 80%, 85%)`;
+    // Smooth transition using YOUR COLORS
+    let color1 = `rgba(255, 218, 180, ${1 - progress})`; // peach
+    let color2 = `rgba(188, 216, 236, ${0.8 + progress * 0.2})`; // blue
+    let color3 = `rgba(220, 204, 236, ${0.7 + progress * 0.3})`; // purple
 
     homeSection.style.background =
         `linear-gradient(135deg, ${color1}, ${color2}, ${color3})`;
