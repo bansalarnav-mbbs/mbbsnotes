@@ -21,3 +21,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+// ===== SCROLL CONTROL TEXT =====
+const text = document.getElementById("scrollText");
+const sub = document.getElementById("scrollSub");
+
+window.addEventListener("scroll", () => {
+    let scroll = window.scrollY;
+
+    if (scroll < 300) {
+        text.innerText = "Learn Smarter";
+        sub.innerText = "Start your MBBS journey the right way";
+    } 
+    else if (scroll < 700) {
+        text.innerText = "Understand Concepts";
+        sub.innerText = "Build strong fundamentals";
+    } 
+    else if (scroll < 1200) {
+        text.innerText = "Revise Faster";
+        sub.innerText = "Save time during exams";
+    } 
+    else {
+        text.innerText = "Ace Your Exams";
+        sub.innerText = "Score with confidence";
+    }
+});
+
+
+// ===== SCROLL FADE-IN =====
+const elements = document.querySelectorAll(".section, .note-card");
+
+function revealOnScroll() {
+    let trigger = window.innerHeight * 0.85;
+
+    elements.forEach(el => {
+        let top = el.getBoundingClientRect().top;
+
+        if (top < trigger) {
+            el.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
