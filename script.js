@@ -172,19 +172,46 @@ if (scrollTopBtn) {
     });
 }
 
-    // ================= SCROLL LIGHT EFFECT (ADD HERE) =================
-    window.addEventListener("scroll", () => {
+    // ================= SCROLL LIGHT EFFECT =================
+window.addEventListener("scroll", () => {
 
-        const home = document.querySelector(".home");
-        if (!home) return;
+    if (!document.body.classList.contains("dark")) return; // 🔥 FIX
 
-        let scroll = window.scrollY;
-        let opacity = Math.min(scroll / 500, 0.3);
+    const home = document.querySelector(".home");
+    if (!home) return;
 
-        home.style.background = `
-            radial-gradient(circle at 50% 20%, rgba(255,232,163,${0.12 - opacity}), transparent 40%),
-            linear-gradient(135deg, #0a0a0a, #181818, #222222)
-        `;
+    let scroll = window.scrollY;
+    let opacity = Math.min(scroll / 500, 0.3);
+
+    home.style.background = `
+        radial-gradient(circle at 50% 20%, rgba(255,232,163,${0.12 - opacity}), transparent 40%),
+        linear-gradient(135deg, #0a0a0a, #181818, #222222)
+    `;
+});
+
+        // ================= RIPPLE EFFECT =================
+document.querySelectorAll(".note-card").forEach(card => {
+    card.addEventListener("click", function (e) {
+
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+
+        const rect = card.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+
+        ripple.style.width = ripple.style.height = size + "px";
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+ripple.style.left = (x - rect.left - size / 2) + "px";
+ripple.style.top = (y - rect.top - size / 2) + "px";
+
+        card.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
     });
+});
 
 });
