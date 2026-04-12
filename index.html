@@ -1,89 +1,167 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Arnav Bansal</title>  <!-- GOOGLE FONTS -->  <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Poppins:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">  
-</head>  <body>  <!-- NAVBAR -->  <nav class="navbar glass">  
-    <div class="nav-container">  <h2 class="logo">Arnav Bansal</h2>  
+document.addEventListener("DOMContentLoaded", function () {
 
-    <!-- RIGHT SIDE BUTTONS -->  
-    <div class="nav-controls">  
-        <button id="darkToggle">🌙</button>  
-        <div class="hamburger" id="hamburger">☰</div>  
-    </div>  
+// ================= PAGE NAVIGATION =================
+window.openPage = function (page) {
+    window.location.href = page;
+};
 
-    <!-- NAV LINKS -->  
-    <div class="nav-links" id="navLinks">  
-        <a href="#home">Home</a>  
-        <a href="#about">About</a>  
-        <a href="#content">Notes</a>  
-        <a href="#follow">Follow</a>  
-    </div>  
 
-</div>
+// ================= SMOOTH SCROLL =================
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+    });
+});
 
-</nav>  <!-- HOME -->  <section id="home" class="section home">  <!-- COMPACT HERO -->  
-<div class="hero-box">  
-    <h1 id="scrollText">Learn Smarter</h1>  
-    <p id="scrollSub">Understand Concepts. Revise Faster. Ace your exams.</p>  
-</div>  
 
-<!-- 2x2 GRID -->  
-<div class="home-grid">  
+// ================= HERO AUTO TEXT =================
+const text = document.getElementById("scrollText");
+const sub = document.getElementById("scrollSub");
 
-    <div class="grid-card fade-up" onclick="openPage('frames.html')">  
-        <img src="images/frames.jpg" alt="MBBS Moments">  
-        <p>My MBBS Moments</p>  
-    </div>  
+const heroContent = [
+    { t: "Learn Smarter", s: "Start your MBBS journey the right way" },
+    { t: "Understand Concepts", s: "Build strong fundamentals" },
+    { t: "Revise Faster", s: "Save time during exams" },
+    { t: "Ace Your Exams", s: "Score with confidence" }
+];
 
-    <div class="grid-card fade-up" onclick="openPage('achievements.html')">  
-        <img src="images/achievements.jpg" alt="Achievements">  
-        <p>Achievements</p>  
-    </div>  
+let index = 0;
 
-    <div class="grid-card fade-up" onclick="openPage('fests.html')">  
-        <img src="images/fests.jpg" alt="Fests">  
-        <p>Fests Attended</p>  
-    </div>  
+setInterval(() => {
+    if (!text || !sub) return;
 
-    <div class="grid-card fade-up" onclick="openPage('hobbies.html')">  
-        <img src="images/hobbies.jpg" alt="Hobbies">  
-        <p>Hobbies & Blogs</p>  
-    </div>  
+    text.style.opacity = 0;
+    sub.style.opacity = 0;
 
-</div>
+    setTimeout(() => {
+        index = (index + 1) % heroContent.length;
 
-</section>  <!-- ABOUT -->  <section id="about" class="section">  
-    <div class="container">  
-        <div class="card fade-up">  
-            <img src="profile.jpg" alt="Arnav Bansal Profile Photo" loading="lazy">  
-            <div>  
-                <h2 class="section-title">About Me</h2>  
-                <p class="about-text">  
-                    I’m a medical student passionate about simplifying complex concepts into clear, handwritten notes.   
-                    This platform is my effort to make MBBS learning more accessible, structured, and student-friendly.  
-                </p>  
-            </div>  
-        </div>  
-    </div>  
-</section>  <!-- CONTENT -->  <section id="content" class="section">  
-    <div class="container">  
-        <h2>Subjects</h2>  <div class="grid">  
-        <div class="note-card"><h3>Anatomy</h3></div>  
-        <div class="note-card"><h3>Physiology</h3></div>  
-        <div class="note-card"><h3>Biochemistry</h3></div>  
-        <div class="note-card"><h3>Pathology</h3></div>  
-    </div>  
-</div>
+        text.innerText = heroContent[index].t;
+        sub.innerText = heroContent[index].s;
 
-</section>  <!-- FOLLOW -->  <section id="follow" class="section">  
-    <div class="container">  
-        <h2>Follow Me</h2>  <div class="socials">  
-        <a href="https://www.instagram.com/bansal.arnav?igsh=b2tibHVwazJ1dWsw" target="_blank">Instagram</a>  
-        <a href="#">LinkedIn</a>  
-    </div>  
-</div>
+        text.style.opacity = 1;
+        sub.style.opacity = 1;
+    }, 300);
 
-</section>  <!-- SCROLL TOP -->  <button id="scrollTop">↑</button>
+}, 3000);
 
-<script src="script.js"></script>  </body>  
-</html>
+
+// ================= SAFE BACKGROUND ANIMATION =================
+const homeSection = document.querySelector(".home");
+
+function updateBackground(scroll) {
+    if (!homeSection) return;
+
+    // Disable animation in dark mode
+    if (document.body.classList.contains("dark")) return;
+
+    let progress = Math.min(scroll / 500, 1); // FIXED RANGE (SAFE)
+
+    let color1 = `rgba(255, 218, 180, ${1 - progress})`; // peach
+    let color2 = `rgba(188, 216, 236, 1)`; // blue
+    let color3 = `rgba(220, 204, 236, 1)`; // purple
+
+    homeSection.style.background =
+        `linear-gradient(135deg, ${color1}, ${color2}, ${color3})`;
+}
+
+
+// ================= SCROLL HANDLER =================
+window.addEventListener("scroll", () => {
+    updateBackground(window.scrollY);
+});
+
+// RUN ON LOAD (VERY IMPORTANT)
+updateBackground(0);
+
+
+// ================= FADE ANIMATION =================
+const faders = document.querySelectorAll(".fade-up");
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+    });
+}, { threshold: 0.2 });
+
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+});
+
+
+// ================= DARK MODE =================
+const toggle = document.getElementById("darkToggle");
+
+if (toggle) {
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark");
+        toggle.innerText = "☀️";
+    }
+
+    toggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("darkMode", "enabled");
+            toggle.innerText = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            toggle.innerText = "🌙";
+        }
+    });
+}
+
+
+// ================= HAMBURGER =================
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+if (hamburger && navLinks) {
+
+    hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+
+        hamburger.innerText = hamburger.classList.contains("active") ? "✖" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            hamburger.innerText = "☰";
+        });
+    });
+}
+
+
+// ================= SCROLL TOP =================
+const scrollTopBtn = document.getElementById("scrollTop");
+
+if (scrollTopBtn) {
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add("show");
+        } else {
+            scrollTopBtn.classList.remove("show");
+        }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
+});
