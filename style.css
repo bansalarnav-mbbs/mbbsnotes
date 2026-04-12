@@ -336,3 +336,61 @@ transition: 0.8s ease;
 opacity: 1;
 transform: translateY(0);
 }
+
+/* HAMBURGER ANIMATION */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Transform to X */
+.hamburger.active {
+    transform: rotate(90deg);
+}
+
+/* NAV LINKS ANIMATION */
+.nav-links {
+    transition: all 0.4s ease;
+}
+
+/* MOBILE NAV ENHANCED */
+@media (max-width: 600px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+
+        flex-direction: column;
+        align-items: center;
+
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+
+        padding: 0;
+        gap: 10px;
+
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.active {
+        max-height: 300px;
+        opacity: 1;
+        padding: 15px 0;
+    }
+
+    body.dark .nav-links {
+        background: rgba(20,20,20,0.95);
+    }
+}
