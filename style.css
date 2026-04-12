@@ -104,7 +104,16 @@ body {
 /* DARK MODE */
 body.dark {
     background: #1a1a1a;
-    color: #eee;
+    color: #ffffff;
+}
+
+/* FIX TEXT VISIBILITY */
+body.dark p,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark a {
+    color: #ffffff;
 }
 
 body.dark .navbar {
