@@ -35,10 +35,16 @@ margin: auto;
 .navbar {
 position: sticky;
 top: 0;
-z-index: 100;
-background: rgba(255,255,255,0.6);
-backdrop-filter: blur(12px);
-padding: 10px 0;
+z-index: 1000;
+
+background: rgba(255, 255, 255, 0.55);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+
+border-bottom: 1px solid rgba(255,255,255,0.3);
+
+padding: 12px 0;
+transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -116,22 +122,33 @@ padding: 40px 20px;
 
 /* HERO BOX (COMPACT CENTER) */
 .hero-box {
-max-width: 600px;
-margin: 20px auto 40px auto;
+max-width: 620px;
+margin: 40px auto;
 text-align: center;
+
+padding: 25px;
+border-radius: 20px;
+
+background: rgba(255,255,255,0.4);
+backdrop-filter: blur(12px);
+
+box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
+/* Heading glow */
 .hero-box h1 {
 font-family: 'Patrick Hand', cursive;
-font-size: 2.2rem;
-transition: all 0.4s ease;
+font-size: 2.4rem;
+
+background: linear-gradient(90deg, #333, #666);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 
+/* Subtitle softness */
 .hero-box p {
-margin-top: 10px;
-font-size: 1rem;
-opacity: 0.8;
-transition: all 0.4s ease;
+opacity: 0.75;
+letter-spacing: 0.5px;
 }
 
 /* GRID 2x2 */
@@ -145,28 +162,49 @@ margin: auto;
 
 /* GRID CARDS */
 .grid-card {
-background: rgba(255,255,255,0.7);
-border-radius: 16px;
+position: relative;
+border-radius: 18px;
 overflow: hidden;
 cursor: pointer;
-transition: all 0.3s ease;
-backdrop-filter: blur(10px);
+
+background: rgba(255,255,255,0.45);
+backdrop-filter: blur(14px);
+
+transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+box-shadow: 
+0 8px 25px rgba(0,0,0,0.08),
+inset 0 1px rgba(255,255,255,0.6);
 }
 
+/* IMAGE */
 .grid-card img {
 width: 100%;
-height: 120px;
+height: 140px;
 object-fit: cover;
+transition: transform 0.5s ease;
 }
 
+/* TEXT */
 .grid-card p {
-padding: 10px;
+padding: 12px;
 font-size: 14px;
+font-weight: 500;
 }
 
+/* HOVER MAGIC */
 .grid-card:hover {
-transform: translateY(-6px) scale(1.02);
-box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+transform: translateY(-8px) scale(1.03);
+box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.grid-card:active {
+transform: scale(0.96);
+}
+
+/* Image zoom */
+.grid-card:hover img {
+transform: scale(1.08);
 }
 
 /* ================= ABOUT ================= */
@@ -346,6 +384,17 @@ transition: 0.8s ease;
 }
 
 .fade-in.show {
+opacity: 1;
+transform: translateY(0);
+}
+
+.fade-up {
+opacity: 0;
+transform: translateY(40px);
+transition: all 0.8s ease;
+}
+
+.fade-up.show {
 opacity: 1;
 transform: translateY(0);
 }
