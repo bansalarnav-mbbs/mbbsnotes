@@ -126,6 +126,7 @@ text-align: center;
 .home {
 min-height: 150vh;
 padding: 60px 20px;
+background: linear-gradient(135deg, var(--peach), var(--blue), var(--purple));
 transition: background 0.5s ease;
 }
 
