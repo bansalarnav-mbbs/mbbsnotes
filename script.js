@@ -1,138 +1,188 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ================= PAGE NAVIGATION =================
-    window.openPage = function (page) {
-        window.location.href = page;
-    };
+// ================= PAGE NAVIGATION =================  
+window.openPage = function (page) {  
+    window.location.href = page;  
+};  
 
 
-    // ================= SMOOTH SCROLL =================
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
+// ================= SMOOTH SCROLL =================  
+document.querySelectorAll(".nav-links a").forEach(link => {  
+    link.addEventListener("click", function (e) {  
+        e.preventDefault();  
+        const target = document.querySelector(this.getAttribute("href"));  
+        if (target) {  
+            target.scrollIntoView({  
+                behavior: "smooth"  
+            });  
+        }  
+    });  
+});  
 
 
-    // ================= AUTO HERO TEXT (FIXED) =================
-    const text = document.getElementById("scrollText");
-    const sub = document.getElementById("scrollSub");
+// ================= HERO TEXT ANIMATION =================  
+const text = document.getElementById("scrollText");  
+const sub = document.getElementById("scrollSub");  
 
-    const heroTexts = [
-        { title: "Learn Smarter", sub: "Start your MBBS journey the right way" },
-        { title: "Understand Concepts", sub: "Build strong fundamentals" },
-        { title: "Revise Faster", sub: "Save time during exams" },
-        { title: "Ace Your Exams", sub: "Score with confidence" }
-    ];
+let lastState = "";  
 
-    let index = 0;
+function updateScrollText(scroll) {  
+    let state = "";  
 
-    function changeHeroText() {
-        if (!text || !sub) return;
+    if (scroll < 300) state = "1";  
+    else if (scroll < 700) state = "2";  
+    else if (scroll < 1200) state = "3";  
+    else state = "4";  
 
-        text.style.opacity = 0;
-        sub.style.opacity = 0;
+    if (state !== lastState && text && sub) {  
+        lastState = state;  
 
-        setTimeout(() => {
-            index = (index + 1) % heroTexts.length;
+        text.style.opacity = 0;  
+        sub.style.opacity = 0;  
 
-            text.innerText = heroTexts[index].title;
-            sub.innerText = heroTexts[index].sub;
+        setTimeout(() => {  
+            if (state === "1") {  
+                text.innerText = "Learn Smarter";  
+                sub.innerText = "Start your MBBS journey the right way";  
+            } else if (state === "2") {  
+                text.innerText = "Understand Concepts";  
+                sub.innerText = "Build strong fundamentals";  
+            } else if (state === "3") {  
+                text.innerText = "Revise Faster";  
+                sub.innerText = "Save time during exams";  
+            } else {  
+                text.innerText = "Ace Your Exams";  
+                sub.innerText = "Score with confidence";  
+            }  
 
-            text.style.opacity = 1;
-            sub.style.opacity = 1;
-        }, 300);
-    }
+            text.style.opacity = 1;  
+            sub.style.opacity = 1;  
 
-    // Run every 3 sec
-    setInterval(changeHeroText, 3000);
-
-
-    // ================= PREMIUM FADE ANIMATION =================
-    const faders = document.querySelectorAll(".fade-up");
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            entry.target.classList.add("show");
-            observer.unobserve(entry.target);
-        });
-    }, { threshold: 0.2 });
-
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
+        }, 200);  
+    }  
+}  
 
 
-    // ================= DARK MODE =================
-    const toggle = document.getElementById("darkToggle");
+// ================= PREMIUM SCROLL ANIMATION =================  
+const faders = document.querySelectorAll(".fade-up");  
 
-    if (toggle) {
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {  
+    entries.forEach(entry => {  
+        if (!entry.isIntersecting) return;  
 
-        if (localStorage.getItem("darkMode") === "enabled") {
-            document.body.classList.add("dark");
-            toggle.innerText = "☀️";
-        }
+        entry.target.classList.add("show");  
+        observer.unobserve(entry.target);  
+    });  
+}, { threshold: 0.2 });  
 
-        toggle.addEventListener("click", function () {
-            document.body.classList.toggle("dark");
-
-            if (document.body.classList.contains("dark")) {
-                localStorage.setItem("darkMode", "enabled");
-                toggle.innerText = "☀️";
-            } else {
-                localStorage.setItem("darkMode", "disabled");
-                toggle.innerText = "🌙";
-            }
-        });
-    }
+faders.forEach(fader => {  
+    appearOnScroll.observe(fader);  
+});  
 
 
-    // ================= HAMBURGER MENU =================
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
+// ================= FALLBACK FADE (OLD ELEMENTS) =================  
+const elements = document.querySelectorAll(".fade-in, .note-card, .card");  
 
-    if (hamburger && navLinks) {
+function revealOnScroll() {  
+    let trigger = window.innerHeight * 0.85;  
 
-        hamburger.addEventListener("click", function () {
-            navLinks.classList.toggle("active");
-            hamburger.classList.toggle("active");
+    elements.forEach(function (el) {  
+        let top = el.getBoundingClientRect().top;  
 
-            hamburger.innerText = hamburger.classList.contains("active") ? "✖" : "☰";
-        });
-
-        document.querySelectorAll("#navLinks a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-                hamburger.classList.remove("active");
-                hamburger.innerText = "☰";
-            });
-        });
-    }
+        if (top < trigger) {  
+            el.classList.add("show");  
+        }  
+    });  
+}  
 
 
-    // ================= SCROLL TO TOP =================
-    const scrollTopBtn = document.getElementById("scrollTop");
+// ================= OPTIMIZED SCROLL HANDLER =================  
+let ticking = false;  
 
-    if (scrollTopBtn) {
+window.addEventListener("scroll", function () {  
+    let scroll = window.scrollY;  
 
-        window.addEventListener("scroll", () => {
-            scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-        });
+    if (!ticking) {  
+        window.requestAnimationFrame(function () {  
+            updateScrollText(scroll);  
+            revealOnScroll();  
+            ticking = false;  
+        });  
 
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
+        ticking = true;  
+    }  
+});  
+
+// Run on load  
+revealOnScroll();  
+
+
+// ================= DARK MODE =================  
+const toggle = document.getElementById("darkToggle");  
+
+if (toggle) {  
+
+    if (localStorage.getItem("darkMode") === "enabled") {  
+        document.body.classList.add("dark");  
+        toggle.innerText = "☀️";  
+    }  
+
+    toggle.addEventListener("click", function () {  
+        document.body.classList.toggle("dark");  
+
+        if (document.body.classList.contains("dark")) {  
+            localStorage.setItem("darkMode", "enabled");  
+            toggle.innerText = "☀️";  
+        } else {  
+            localStorage.setItem("darkMode", "disabled");  
+            toggle.innerText = "🌙";  
+        }  
+    });  
+}  
+
+
+// ================= HAMBURGER MENU =================  
+const hamburger = document.getElementById("hamburger");  
+const navLinks = document.getElementById("navLinks");  
+
+if (hamburger && navLinks) {  
+
+    hamburger.addEventListener("click", function () {  
+        navLinks.classList.toggle("active");  
+        hamburger.classList.toggle("active");  
+
+        hamburger.innerText = hamburger.classList.contains("active") ? "✖" : "☰";  
+    });  
+
+    document.querySelectorAll("#navLinks a").forEach(link => {  
+        link.addEventListener("click", () => {  
+            navLinks.classList.remove("active");  
+            hamburger.classList.remove("active");  
+            hamburger.innerText = "☰";  
+        });  
+    });  
+}  
+
+
+// ================= SCROLL TO TOP BUTTON =================  
+const scrollTopBtn = document.getElementById("scrollTop");  
+
+if (scrollTopBtn) {  
+
+    window.addEventListener("scroll", () => {  
+        if (window.scrollY > 300) {  
+            scrollTopBtn.style.display = "block";  
+        } else {  
+            scrollTopBtn.style.display = "none";  
+        }  
+    });  
+
+    scrollTopBtn.addEventListener("click", () => {  
+        window.scrollTo({  
+            top: 0,  
+            behavior: "smooth"  
+        });  
+    });  
+}
 
 });
