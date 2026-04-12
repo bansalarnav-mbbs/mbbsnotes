@@ -60,27 +60,19 @@ body {
     max-width: 800px;
     margin: auto;
     display: flex;
+    align-items: center;
     gap: 20px;
     background: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .card img {
-.card img {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 50%;   /* makes it circular */
-    border: 3px solid #e0d6c3;
-}
-    
-.card img {
-    transition: transform 0.4s ease;
-}
-
-.card img:hover {
-    transform: scale(1.08);
+    width: 120px;
+    height: 120px;
+    object-fit: cover;   /* crops image nicely */
+    border-radius: 50%;  /* circle */
+    flex-shrink: 0;      /* prevents shrinking issues */
 }
 
 /* GRID */
