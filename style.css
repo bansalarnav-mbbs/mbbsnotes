@@ -90,6 +90,27 @@ body {
 }
 
 /* SOCIAL */
+#follow {
+    margin-top: 60px;   /* pushes it down */
+    padding-top: 40px;
+}
+
+#follow {
+    border-top: 1px solid #e0d6c3;
+}
+
+#follow {
+    text-align: center;
+}
+
+#follow h2 {
+    margin-bottom: 20px;
+}
+
+.socials {
+    margin-top: 10px;
+}
+
 .socials a {
     margin: 10px;
     padding: 10px 15px;
