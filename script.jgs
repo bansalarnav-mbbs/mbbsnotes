@@ -1,15 +1,17 @@
-const elements = document.querySelectorAll(".fade-in");
+// DARK MODE
+const toggle = document.getElementById("darkToggle");
 
-function showOnScroll() {
-    const triggerBottom = window.innerHeight * 0.8;
+toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
 
-    elements.forEach(el => {
-        const boxTop = el.getBoundingClientRect().top;
+// TEXT CHANGE
+const text = document.getElementById("changingText");
 
-        if (boxTop < triggerBottom) {
-            el.classList.add("show");
-        }
-    });
-}
+window.addEventListener("scroll", () => {
+    let scroll = window.scrollY;
 
-window.addEventListener("scroll", showOnScroll);
+    if (scroll < 200) text.innerText = "MBBS Handwritten Notes";
+    else if (scroll < 500) text.innerText = "Understand Concepts";
+    else text.innerText = "Revise Faster";
+});
