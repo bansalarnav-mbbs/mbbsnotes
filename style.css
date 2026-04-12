@@ -324,7 +324,7 @@ margin: auto;
 
 /* HOVER (APPLE LIFT) */
 .note-card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-5px) scale(1.015);
 
   box-shadow: 
     0 12px 30px rgba(0,0,0,0.12),
