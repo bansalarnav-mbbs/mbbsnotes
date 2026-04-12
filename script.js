@@ -125,4 +125,32 @@ if (toggle) {
     });
 }
 
+// ===== HAMBURGER MENU (ANIMATED) =====
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+if (hamburger && navLinks) {
+
+    hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+
+        // Change icon ☰ ↔ ✖
+        if (hamburger.classList.contains("active")) {
+            hamburger.innerText = "✖";
+        } else {
+            hamburger.innerText = "☰";
+        }
+    });
+
+    // AUTO CLOSE WHEN CLICKING LINK
+    document.querySelectorAll("#navLinks a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+            hamburger.innerText = "☰";
+        });
+    });
+}
+    
 });
