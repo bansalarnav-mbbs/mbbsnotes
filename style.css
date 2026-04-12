@@ -73,6 +73,13 @@ body {
     background: var(--green);
     padding: 60px 20px;
 }
+#about h2 {
+    margin-bottom: 15px;
+}
+#about p {
+    margin-top: 10px;
+    line-height: 1.6;
+}
 
 .card {
     max-width: 800px;
