@@ -126,6 +126,10 @@ border-bottom: 1px solid #e0d6c3;
 transition: border 0.4s ease;
 }
 
+.section h2 {
+  margin-bottom: 25px;
+}
+
 /* ================= HOME ================= */
 .home {
 position: relative;
@@ -243,6 +247,11 @@ margin: auto;
 }
 
 /* CONTENT */
+
+#content h2 {
+  margin-bottom: 25px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* tighter */
@@ -255,8 +264,20 @@ padding: 20px;
 border-radius: 12px;
 }
 
+.note-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .note-card h3 {
-  word-break: break-word;
+  white-space: nowrap; /* keep single line */
+  font-size: 15px;
+}
+
+.note-card h3:contains("Forensic") {
+  white-space: normal;
 }
 
 /* FOLLOW */
@@ -338,13 +359,28 @@ body.dark {
 
 /* HOME DARK (ONLY ONE VERSION) */
 body.dark .home {
-  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #111111 40%,
+    #1a1a1a 100%
+  );
+
   animation: none;
 }
 
-/* REMOVE COLOR BLOBS */
 body.dark .home::before {
-  display: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(255, 232, 163, 0.08),
+    transparent 60%
+  );
+
+  z-index: 0;
 }
 
 /* FIX GLASS OVERLAY */
