@@ -124,3 +124,56 @@ body.dark .note-card,
 body.dark .card {
     background: #2a2a2a;
 }
+
+/* GLASS NAVBAR */
+.glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* STICKY SCROLL SECTION */
+.sticky-section {
+    height: 200vh;
+    position: relative;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 35%;
+    text-align: center;
+}
+
+.sticky-content h1 {
+    font-family: 'Kalam', cursive;
+    font-size: 2.8rem;
+    transition: all 0.4s ease;
+}
+
+.sticky-content p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+}
+
+/* APPLE-LIKE CARD ANIMATION */
+.note-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* FADE IN ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
