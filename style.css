@@ -10,14 +10,18 @@
 --white: #ffffff;
 }
 
-/* RESET */
-
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+/* SMOOTH SCROLL */
+html {
+scroll-behavior: smooth;
 }
 
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
 /* BODY */
 body {
@@ -53,14 +57,17 @@ transition: all 0.3s ease;
 width: 90%;
 max-width: 1100px;
 margin: auto;
+
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0 10px;
+
+padding: 0 20px;
 }
 
 .logo {
-padding-left: 5px;
+font-size: 20px;
+font-weight: 600;
 }
 
 /* RIGHT CONTROLS */
@@ -70,7 +77,7 @@ align-items: center;
 gap: 12px;
 }
 
-/* NAV LINKS (DESKTOP) */
+/* NAV LINKS */
 .nav-links {
 display: flex;
 align-items: center;
@@ -111,22 +118,21 @@ transform: rotate(90deg);
 
 /* SECTIONS */
 .section {
-padding: 80px 20px;
+padding: 70px 20px;
 text-align: center;
 }
 
-/* ================= HOME UPDATED ================= */
-
+/* ================= HOME ================= */
 .home {
-background: linear-gradient(135deg, var(--blue), var(--purple), var(--peach));
-padding: 40px 20px;
+min-height: 150vh;
+padding: 60px 20px;
+transition: background 0.5s ease;
 }
 
-/* HERO BOX (COMPACT CENTER) */
+/* HERO BOX */
 .hero-box {
 max-width: 620px;
-margin: 40px auto;
-text-align: center;
+margin: 40px auto 30px auto;
 
 padding: 25px;
 border-radius: 20px;
@@ -137,7 +143,11 @@ backdrop-filter: blur(12px);
 box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Heading glow */
+.hero-box h1,
+.hero-box p {
+transition: opacity 0.4s ease;
+}
+
 .hero-box h1 {
 font-family: 'Patrick Hand', cursive;
 font-size: 2.4rem;
@@ -147,13 +157,12 @@ background: linear-gradient(90deg, #333, #666);
 -webkit-text-fill-color: transparent;
 }
 
-/* Subtitle softness */
 .hero-box p {
 opacity: 0.75;
 letter-spacing: 0.5px;
 }
 
-/* GRID 2x2 */
+/* GRID */
 .home-grid {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -162,7 +171,7 @@ max-width: 800px;
 margin: auto;
 }
 
-/* GRID CARDS */
+/* GRID CARD */
 .grid-card {
 position: relative;
 border-radius: 18px;
@@ -179,22 +188,19 @@ box-shadow:
 inset 0 1px rgba(255,255,255,0.6);
 }
 
-/* IMAGE */
 .grid-card img {
 width: 100%;
-height: 140px;
+aspect-ratio: 4/3;
 object-fit: cover;
 transition: transform 0.5s ease;
 }
 
-/* TEXT */
 .grid-card p {
 padding: 12px;
 font-size: 14px;
 font-weight: 500;
 }
 
-/* HOVER MAGIC */
 .grid-card:hover {
 transform: translateY(-8px) scale(1.03);
 box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -204,15 +210,14 @@ box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 transform: scale(0.96);
 }
 
-/* Image zoom */
 .grid-card:hover img {
 transform: scale(1.08);
 }
 
 /* ================= ABOUT ================= */
-
 #about {
 background: linear-gradient(135deg, var(--green), var(--yellow));
+margin-top: 40px;
 }
 
 .section-title {
@@ -229,13 +234,17 @@ line-height: 1.7;
 .card {
 max-width: 800px;
 margin: auto;
+
 display: flex;
 align-items: center;
-gap: 20px;
+gap: 25px;
+
 background: var(--white);
-padding: 25px;
+padding: 30px;
+
 border-radius: 14px;
 box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
 transition: transform 0.3s ease;
 }
 
@@ -251,12 +260,11 @@ border-radius: 50%;
 flex-shrink: 0;
 }
 
-/* CONTENT */
+/* ================= CONTENT ================= */
 #content h2 {
 font-family: 'Patrick Hand', cursive;
 }
 
-/* GRID */
 .grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -277,7 +285,7 @@ transform: translateY(-8px) scale(1.03);
 box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
-/* FOLLOW */
+/* ================= FOLLOW ================= */
 #follow {
 margin-top: 60px;
 padding-top: 40px;
@@ -305,6 +313,23 @@ color: white;
 transform: translateY(-3px);
 }
 
+/* ================= SCROLL TOP ================= */
+#scrollTop {
+position: fixed;
+bottom: 20px;
+right: 20px;
+
+opacity: 0;
+pointer-events: none;
+
+transition: opacity 0.3s ease;
+}
+
+#scrollTop.show {
+opacity: 1;
+pointer-events: auto;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 600px) {
 
@@ -318,18 +343,17 @@ top: 60px;
 left: 0;
 width: 100%;
 
-background: rgba(255,255,255,0.95);  
-backdrop-filter: blur(10px);  
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(10px);
 
-flex-direction: column;  
-align-items: center;  
+flex-direction: column;
+align-items: center;
 
-max-height: 0;  
-overflow: hidden;  
-opacity: 0;  
+max-height: 0;
+overflow: hidden;
+opacity: 0;
 
 transition: all 0.4s ease;
-
 }
 
 .nav-links.active {
@@ -346,7 +370,6 @@ text-align: center;
 }
 
 /* ================= DARK MODE ================= */
-
 body.dark {
 background: linear-gradient(to bottom, #121212, #1f1f1f);
 color: #ffffff;
