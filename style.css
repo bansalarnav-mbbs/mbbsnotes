@@ -236,6 +236,10 @@ display: block;
 
 
 /* ABOUT */
+#about h2 {
+  margin-bottom: 15px;
+}
+
 .card {
 max-width: 800px;
 margin: auto;
