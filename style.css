@@ -331,27 +331,38 @@ grid-template-columns: 1fr;
 }
 
 /* ================= DARK MODE ================= */
+
+body.dark {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: #f5f5f5;
+}
+
+/* HOME DARK (ONLY ONE VERSION) */
 body.dark .home {
   background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
   animation: none;
 }
 
-/* HOME DARK */
-body.dark .home {
-background: linear-gradient(120deg, #0f172a, #1e3a8a, #0f172a);
-animation: none;
+/* REMOVE COLOR BLOBS */
+body.dark .home::before {
+  display: none;
+}
+
+/* FIX GLASS OVERLAY */
+body.dark .home::after {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* TEXT VISIBILITY */
 body.dark h1,
 body.dark h2,
 body.dark h3 {
-color: var(--dark-yellow);
+  color: #ffe8a3; /* soft yellow */
 }
 
 body.dark p,
 body.dark a {
-color: var(--dark-text);
+  color: #f5f5f5;
 }
 
 /* CARDS */
@@ -359,15 +370,16 @@ body.dark .card,
 body.dark .note-card,
 body.dark .hero-box,
 body.dark .grid-card {
-background: rgba(30,30,40,0.9);
-color: white;
+  background: rgba(30,30,30,0.9);
+  color: #fff;
 }
 
 /* NAVBAR */
 body.dark .navbar {
-background: rgba(20,20,30,0.7);
+  background: rgba(20,20,20,0.8);
 }
 
+/* MENU */
 body.dark .nav-links {
   background: #1a1a1a;
   backdrop-filter: blur(20px);
@@ -380,7 +392,7 @@ body.dark .nav-links a {
 
 /* SECTION SEPARATOR */
 body.dark .section {
-border-bottom: 1px solid var(--dark-yellow);
+  border-bottom: 1px solid rgba(255, 232, 163, 0.3);
 }
 
 /* BUTTONS */
