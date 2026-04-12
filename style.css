@@ -1,3 +1,15 @@
+:root {
+    --pink: #FFCBE1;
+    --green: #D6E5BD;
+    --yellow: #F9E1A8;
+    --blue: #BCD8EC;
+    --purple: #DCCCEC;
+    --peach: #FFDAB4;
+
+    --text: #333;
+    --white: #ffffff;
+}
+
 /* RESET */
 * {
     margin: 0;
@@ -47,7 +59,7 @@ body {
 
 /* HOME */
 .home {
-    background: linear-gradient(#e8f0f7, #fdf6ec);
+    background: linear-gradient(to bottom, var(--blue), #fdf6ec);
 }
 
 .home h1 {
@@ -56,6 +68,12 @@ body {
 }
 
 /* CARD */
+
+#about {
+    background: var(--green);
+    padding: 60px 20px;
+}
+
 .card {
     max-width: 800px;
     margin: auto;
@@ -84,9 +102,9 @@ body {
 }
 
 .note-card {
-    background: white;
+    background: var(--white);
+    border-radius: 12px;
     padding: 20px;
-    border-radius: 10px;
 }
 
 /* SOCIAL */
