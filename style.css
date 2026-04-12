@@ -225,8 +225,7 @@ transform: scale(1.08);
 
 /* ================= ABOUT ================= */
 #about {
-background: linear-gradient(135deg, var(--green), var(--yellow));
-margin-top: 40px;
+background: linear-gradient(180deg, var(--peach), var(--green));
 }
 
 .section-title {
