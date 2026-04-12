@@ -55,15 +55,16 @@ setInterval(changeHeroText, 3000);
 const homeSection = document.querySelector(".home");
 
 function updateBackground(scroll) {
+function updateBackground(scroll) {
     if (!homeSection) return;
 
-    // STOP animation in dark mode
+    // Stop animation in dark mode
     if (document.body.classList.contains("dark")) return;
 
-    let maxScroll = homeSection.offsetHeight;
-    let progress = Math.min(scroll / maxScroll, 1);
+    let maxScroll = homeSection.offsetHeight - window.innerHeight;
+    let progress = Math.max(0, Math.min(scroll / maxScroll, 1));
 
-    // Smooth transition using YOUR COLORS
+    // Smooth interpolation using your theme colors
     let color1 = `rgba(255, 218, 180, ${1 - progress})`; // peach
     let color2 = `rgba(188, 216, 236, ${0.8 + progress * 0.2})`; // blue
     let color3 = `rgba(220, 204, 236, ${0.7 + progress * 0.3})`; // purple
@@ -106,6 +107,8 @@ window.addEventListener("scroll", function () {
     }
 });
 
+ // RUN ON LOAD (IMPORTANT FIX)
+updateBackground(0);
 
 // ================= DARK MODE =================
 const toggle = document.getElementById("darkToggle");
