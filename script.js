@@ -2,140 +2,137 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ================= PAGE NAVIGATION =================
 window.openPage = function (page) {
-    window.location.href = page;
+window.location.href = page;
 };
-
 
 // ================= SMOOTH SCROLL =================
 document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-        }
-    });
+link.addEventListener("click", function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute("href"));
+if (target) {
+target.scrollIntoView({ behavior: "smooth" });
+}
 });
-
+});
 
 // ================= HERO AUTO TEXT (EVERY 3 SEC) =================
 const text = document.getElementById("scrollText");
 const sub = document.getElementById("scrollSub");
 
 const heroContent = [
-    { t: "Learn Smarter", s: "Start your MBBS journey the right way" },
-    { t: "Understand Concepts", s: "Build strong fundamentals" },
-    { t: "Revise Faster", s: "Save time during exams" },
-    { t: "Ace Your Exams", s: "Score with confidence" }
+{ t: "Learn Smarter", s: "Start your MBBS journey the right way" },
+{ t: "Understand Concepts", s: "Build strong fundamentals" },
+{ t: "Revise Faster", s: "Save time during exams" },
+{ t: "Ace Your Exams", s: "Score with confidence" }
 ];
 
 let index = 0;
 
 function changeHeroText() {
-    if (!text || !sub) return;
+if (!text || !sub) return;
 
-    text.style.opacity = 0;
-    sub.style.opacity = 0;
+text.style.opacity = 0;
+sub.style.opacity = 0;
 
-    setTimeout(() => {
-        index = (index + 1) % heroContent.length;
+setTimeout(() => {
+    index = (index + 1) % heroContent.length;
 
-        text.innerText = heroContent[index].t;
-        sub.innerText = heroContent[index].s;
+    text.innerText = heroContent[index].t;
+    sub.innerText = heroContent[index].s;
 
-        text.style.opacity = 1;
-        sub.style.opacity = 1;
-    }, 300);
+    text.style.opacity = 1;
+    sub.style.opacity = 1;
+}, 300);
+
 }
 
 setInterval(changeHeroText, 3000);
-    
 
 // ================= FADE ANIMATION =================
 const faders = document.querySelectorAll(".fade-up");
 
 const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+entries.forEach(entry => {
+if (!entry.isIntersecting) return;
 
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-    });
+    entry.target.classList.add("show");
+    observer.unobserve(entry.target);
+});
+
 }, { threshold: 0.2 });
 
 faders.forEach(fader => {
-    appearOnScroll.observe(fader);
+appearOnScroll.observe(fader);
 });
-
- // RUN ON LOAD (IMPORTANT FIX)
-updateBackground(0);
 
 // ================= DARK MODE =================
 const toggle = document.getElementById("darkToggle");
 
 if (toggle) {
 
-    if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark");
-        toggle.innerText = "☀️";
-    }
-
-    toggle.addEventListener("click", function () {
-        document.body.classList.toggle("dark");
-
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("darkMode", "enabled");
-            toggle.innerText = "☀️";
-        } else {
-            localStorage.setItem("darkMode", "disabled");
-            toggle.innerText = "🌙";
-        }
-    });
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark");
+    toggle.innerText = "☀️";
 }
 
+toggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
 
-// ================= HAMBURGER =================
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("darkMode", "enabled");
+        toggle.innerText = "☀️";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        toggle.innerText = "🌙";
+    }
+});
+
+}
+
+// ================= HAMBURGER MENU =================
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
 if (hamburger && navLinks) {
 
-    hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active");
+hamburger.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+    hamburger.classList.toggle("active");
 
-        hamburger.innerText = hamburger.classList.contains("active") ? "✖" : "☰";
-    });
+    hamburger.innerText = hamburger.classList.contains("active") ? "✖" : "☰";
+});
 
-    document.querySelectorAll("#navLinks a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-            hamburger.classList.remove("active");
-            hamburger.innerText = "☰";
-        });
+document.querySelectorAll("#navLinks a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.innerText = "☰";
     });
+});
+
 }
 
-
-// ================= SCROLL TOP =================
+// ================= SCROLL TO TOP =================
 const scrollTopBtn = document.getElementById("scrollTop");
 
 if (scrollTopBtn) {
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add("show");
-        } else {
-            scrollTopBtn.classList.remove("show");
-        }
-    });
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("show");
+    } else {
+        scrollTopBtn.classList.remove("show");
+    }
+});
 
-    scrollTopBtn.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
+});
+
 }
 
 });
