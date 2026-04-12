@@ -59,7 +59,7 @@ body {
 
 /* HOME */
 .home {
-    background: linear-gradient(to bottom, var(--blue), #fdf6ec);
+    background: linear-gradient(to bottom, #BCD8EC, #fdf6ec) !important;
 }
 
 .home h1 {
