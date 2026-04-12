@@ -170,7 +170,21 @@ if (scrollTopBtn) {
             behavior: "smooth"
         });
     });
-
 }
+
+    // ================= SCROLL LIGHT EFFECT (ADD HERE) =================
+    window.addEventListener("scroll", () => {
+
+        const home = document.querySelector(".home");
+        if (!home) return;
+
+        let scroll = window.scrollY;
+        let opacity = Math.min(scroll / 500, 0.3);
+
+        home.style.background = `
+            radial-gradient(circle at 50% 20%, rgba(255,232,163,${0.12 - opacity}), transparent 40%),
+            linear-gradient(135deg, #0a0a0a, #181818, #222222)
+        `;
+    });
 
 });
