@@ -166,8 +166,7 @@ animation: blobMove 12s ease-in-out infinite;
   position: absolute;
   inset: 0;
 
-  background: rgba(255, 255, 255, 0.08); /* reduce opacity */
-  backdrop-filter: blur(6px); /* 🔥 reduced blur */
+  background: rgba(255, 255, 255, 0.04); /* very subtle light layer */
 
   z-index: 0;
 }
