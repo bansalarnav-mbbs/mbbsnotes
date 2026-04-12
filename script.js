@@ -106,12 +106,20 @@ if (toggle) {
         document.body.classList.toggle("dark");
 
         if (document.body.classList.contains("dark")) {
-            localStorage.setItem("darkMode", "enabled");
-            toggle.innerText = "☀️";
-        } else {
-            localStorage.setItem("darkMode", "disabled");
-            toggle.innerText = "🌙";
-        }
+        const home = document.querySelector(".home");
+
+if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "enabled");
+    toggle.innerText = "☀️";
+} else {
+    localStorage.setItem("darkMode", "disabled");
+    toggle.innerText = "🌙";
+
+    // 🔥 RESET BACKGROUND (VERY IMPORTANT)
+    if (home) {
+        home.style.background = "";
+    }
+}
 
     });
 }
