@@ -55,16 +55,17 @@ setInterval(changeHeroText, 3000);
 const homeSection = document.querySelector(".home");
 
 function updateBackground(scroll) {
-function updateBackground(scroll) {
     if (!homeSection) return;
 
     // Stop animation in dark mode
     if (document.body.classList.contains("dark")) return;
 
-    let maxScroll = homeSection.offsetHeight - window.innerHeight;
-    let progress = Math.max(0, Math.min(scroll / maxScroll, 1));
+    let maxScroll = homeSection.offsetHeight;
 
-    // Smooth interpolation using your theme colors
+    // SAFE calculation (no negative / no division errors)
+    let progress = Math.min(scroll / maxScroll, 1);
+
+    // Smooth colors (stable)
     let color1 = `rgba(255, 218, 180, ${1 - progress})`; // peach
     let color2 = `rgba(188, 216, 236, ${0.8 + progress * 0.2})`; // blue
     let color3 = `rgba(220, 204, 236, ${0.7 + progress * 0.3})`; // purple
