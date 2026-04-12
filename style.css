@@ -124,10 +124,21 @@ text-align: center;
 
 /* ================= HOME ================= */
 .home {
-min-height: 120vh; /* FIXED */
+min-height: 120vh;
 padding: 60px 20px;
-background: linear-gradient(135deg, var(--peach), var(--blue), var(--purple));
-transition: background 0.5s ease;
+
+/* Gradient */
+background: linear-gradient(
+    120deg,
+    var(--peach),
+    var(--blue),
+    var(--purple),
+    var(--pink)
+);
+
+/* MAGIC PART */
+background-size: 300% 300%;
+animation: gradientFlow 12s ease infinite;
 }
 
 /* HERO BOX */
@@ -225,7 +236,11 @@ transform: scale(1.08);
 
 /* ================= ABOUT ================= */
 #about {
-background: linear-gradient(180deg, var(--peach), var(--green));
+background: linear-gradient(
+    180deg,
+    var(--purple),
+    var(--green)
+);
 }
 
 .section-title {
@@ -389,7 +404,7 @@ background: rgba(20,20,20,0.85);
 
 body.dark .home {
 background: linear-gradient(135deg, #1e1e2f, #2a2a3d, #1f1f1f);
-transition: background 0.5s ease;
+animation: none; /* stop animation in dark mode */
 }
 
 body.dark .grid-card {
@@ -447,4 +462,15 @@ border-bottom: 1px solid #e0d6c3;
 border-bottom: none;
 margin-top: 60px;
 padding-top: 40px;
+}
+@keyframes gradientFlow {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
 }
