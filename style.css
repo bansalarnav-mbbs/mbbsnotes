@@ -62,13 +62,19 @@ padding: 0 10px;
 padding-left: 5px;
 }
 
-.nav-right {
+/* RIGHT CONTROLS */
+.nav-controls {
 display: flex;
 align-items: center;
-gap: 15px;
+gap: 10px;
 }
 
-/* NAV LINKS */
+/* NAV LINKS (DESKTOP) */
+.nav-links {
+display: flex;
+align-items: center;
+}
+
 .nav-links a {
 margin: 0 10px;
 text-decoration: none;
@@ -86,6 +92,13 @@ opacity: 0.7;
 border: none;
 background: none;
 font-size: 18px;
+cursor: pointer;
+}
+
+/* HAMBURGER */
+.hamburger {
+display: none;
+font-size: 22px;
 cursor: pointer;
 }
 
@@ -213,15 +226,41 @@ color: white;
 transform: translateY(-3px);
 }
 
-/* MOBILE */
+/* MOBILE NAV */
 @media (max-width: 600px) {
-.card {
-flex-direction: column;
-text-align: center;
+
+.hamburger {
+    display: block;
 }
 
 .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+
+    flex-direction: column;
+    align-items: center;
+
     display: none;
+    padding: 15px 0;
+    gap: 10px;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+body.dark .nav-links {
+    background: rgba(20,20,20,0.95);
+}
+
+.card {
+    flex-direction: column;
+    text-align: center;
 }
 
 }
