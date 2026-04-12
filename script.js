@@ -1,4 +1,3 @@
-// WAIT UNTIL PAGE LOADS (VERY IMPORTANT)
 document.addEventListener("DOMContentLoaded", function () {
 
     // ===== SCROLL TEXT CHANGE =====
@@ -48,5 +47,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // RUN ON LOAD ALSO
     revealOnScroll();
+
+
+    // ===== DARK MODE TOGGLE =====
+    const toggle = document.getElementById("darkToggle");
+
+    if (toggle) {
+
+        // Load saved mode
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark");
+            toggle.innerText = "☀️";
+        }
+
+        toggle.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+
+            // Save preference
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("darkMode", "enabled");
+                toggle.innerText = "☀️";
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+                toggle.innerText = "🌙";
+            }
+        });
+    }
 
 });
