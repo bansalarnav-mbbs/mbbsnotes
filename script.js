@@ -20,50 +20,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // ================= HERO TEXT ANIMATION =================
+    // ================= AUTO HERO TEXT (FIXED) =================
     const text = document.getElementById("scrollText");
     const sub = document.getElementById("scrollSub");
 
-    let lastState = "";
+    const heroTexts = [
+        { title: "Learn Smarter", sub: "Start your MBBS journey the right way" },
+        { title: "Understand Concepts", sub: "Build strong fundamentals" },
+        { title: "Revise Faster", sub: "Save time during exams" },
+        { title: "Ace Your Exams", sub: "Score with confidence" }
+    ];
 
-    function updateScrollText(scroll) {
-        let state = "";
+    let index = 0;
 
-        if (scroll < 300) state = "1";
-        else if (scroll < 700) state = "2";
-        else if (scroll < 1200) state = "3";
-        else state = "4";
+    function changeHeroText() {
+        if (!text || !sub) return;
 
-        if (state !== lastState && text && sub) {
-            lastState = state;
+        text.style.opacity = 0;
+        sub.style.opacity = 0;
 
-            text.style.opacity = 0;
-            sub.style.opacity = 0;
+        setTimeout(() => {
+            index = (index + 1) % heroTexts.length;
 
-            setTimeout(() => {
-                if (state === "1") {
-                    text.innerText = "Learn Smarter";
-                    sub.innerText = "Start your MBBS journey the right way";
-                } else if (state === "2") {
-                    text.innerText = "Understand Concepts";
-                    sub.innerText = "Build strong fundamentals";
-                } else if (state === "3") {
-                    text.innerText = "Revise Faster";
-                    sub.innerText = "Save time during exams";
-                } else {
-                    text.innerText = "Ace Your Exams";
-                    sub.innerText = "Score with confidence";
-                }
+            text.innerText = heroTexts[index].title;
+            sub.innerText = heroTexts[index].sub;
 
-                text.style.opacity = 1;
-                sub.style.opacity = 1;
-
-            }, 200);
-        }
+            text.style.opacity = 1;
+            sub.style.opacity = 1;
+        }, 300);
     }
 
+    // Run every 3 sec
+    setInterval(changeHeroText, 3000);
 
-    // ================= PREMIUM SCROLL ANIMATION =================
+
+    // ================= PREMIUM FADE ANIMATION =================
     const faders = document.querySelectorAll(".fade-up");
 
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -78,43 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
-
-
-    // ================= FALLBACK FADE (OLD ELEMENTS) =================
-    const elements = document.querySelectorAll(".fade-in, .note-card, .card");
-
-    function revealOnScroll() {
-        let trigger = window.innerHeight * 0.85;
-
-        elements.forEach(function (el) {
-            let top = el.getBoundingClientRect().top;
-
-            if (top < trigger) {
-                el.classList.add("show");
-            }
-        });
-    }
-
-
-    // ================= OPTIMIZED SCROLL HANDLER =================
-    let ticking = false;
-
-    window.addEventListener("scroll", function () {
-        let scroll = window.scrollY;
-
-        if (!ticking) {
-            window.requestAnimationFrame(function () {
-                updateScrollText(scroll);
-                revealOnScroll();
-                ticking = false;
-            });
-
-            ticking = true;
-        }
-    });
-
-    // Run on load
-    revealOnScroll();
 
 
     // ================= DARK MODE =================
@@ -164,17 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ================= SCROLL TO TOP BUTTON =================
+    // ================= SCROLL TO TOP =================
     const scrollTopBtn = document.getElementById("scrollTop");
 
     if (scrollTopBtn) {
 
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
+            scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
         });
 
         scrollTopBtn.addEventListener("click", () => {
