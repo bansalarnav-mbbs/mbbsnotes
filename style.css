@@ -124,20 +124,26 @@ text-align: center;
 
 /* ================= HOME ================= */
 .home {
-.home {
 position: relative;
 overflow: hidden;
 
 min-height: 120vh;
 padding: 60px 20px;
 
+/* Pastel Gradient */
 background: linear-gradient(
     120deg,
-    var(--peach),
-    var(--blue),
-    var(--purple),
-    var(--pink)
+    #FFDAB4,   /* peach */
+    #BCD8EC,   /* soft blue */
+    #DCCCEC,   /* lavender */
+    #FFCBE1,   /* pink */
+    #F9E1A8    /* soft yellow */
 );
+
+/* Smooth movement */
+background-size: 400% 400%;
+animation: pastelFlow 25s ease-in-out infinite;
+}
 
   
 background-size: 300% 300%;
@@ -443,8 +449,14 @@ background: rgba(20,20,20,0.85);
 }
 
 body.dark .home {
-background: linear-gradient(135deg, #1e1e2f, #2a2a3d, #1f1f1f);
-animation: none; /* stop animation in dark mode */
+background: linear-gradient(
+    120deg,
+    #1e1e2f,
+    #2a2a3d,
+    #1f1f1f
+);
+
+animation: none;
 }
 
 body.dark .grid-card {
@@ -522,10 +534,22 @@ padding-top: 40px;
 }
 }
 
-@keyframes gradientFlow {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
+@keyframes pastelFlow {
+0% {
+    background-position: 0% 50%;
+}
+25% {
+    background-position: 50% 100%;
+}
+50% {
+    background-position: 100% 50%;
+}
+75% {
+    background-position: 50% 0%;
+}
+100% {
+    background-position: 0% 50%;
+}
 }
 
 @keyframes blobMove {
