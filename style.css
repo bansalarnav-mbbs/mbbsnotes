@@ -32,13 +32,16 @@ overflow-x: hidden;
 
 /* BODY */
 body {
-font-family: 'Poppins', sans-serif;
-color: var(--text);
+    margin: 0;  /* 🔥 VERY IMPORTANT FIX */
 
-background: linear-gradient(to bottom, var(--peach), #fdf6ec);
-transition: background 0.5s ease, color 0.5s ease; /* 🔥 smooth mode switch */
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
 
-overflow-x: hidden;
+    background: linear-gradient(to bottom, var(--peach), #fdf6ec);
+
+    transition: background 0.5s ease, color 0.5s ease;
+
+    overflow-x: hidden;
 }
 
 /* CONTAINER */
@@ -51,28 +54,29 @@ margin: auto;
 /* NAVBAR */
 .navbar {
     position: sticky;
-    top: 12px; /* 🔥 floating effect */
-    z-index: 1000;
+    top: 12px;
+    z-index: 9999;
 
-    width: 92%;
-    margin: auto;
+    width: calc(100% - 24px);
+    margin: 0 auto;
 
-    border-radius: 14px;
+    padding: 12px 18px;
 
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border-radius: 18px;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* 🔥 GLASS EFFECT */
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    box-shadow:
-    0 8px 30px rgba(0,0,0,0.08),
-    inset 0 1px rgba(255,255,255,0.4);
+    /* subtle border for glass edge */
+    border: 1px solid rgba(255, 255, 255, 0.3);
 
-    padding: 12px 0;
+    /* floating shadow */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 
-    transition: all 0.35s ease;
-    isolation: isolate;
+    /* smooth transition */
+    transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -85,6 +89,11 @@ justify-content: space-between;
 align-items: center;
 
 padding: 0 18px;
+}
+
+.navbar.scrolled {
+    padding: 8px 16px;
+    backdrop-filter: blur(25px);
 }
 
 .logo {
