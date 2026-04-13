@@ -94,6 +94,9 @@ const toggle = document.getElementById("darkToggle");
 
 if (toggle) {
 
+    const home = document.querySelector(".home");
+
+    // Load saved mode
     if (localStorage.getItem("darkMode") === "enabled") {
         document.body.classList.add("dark");
         toggle.innerText = "☀️";
@@ -106,21 +109,17 @@ if (toggle) {
         document.body.classList.toggle("dark");
 
         if (document.body.classList.contains("dark")) {
-        const home = document.querySelector(".home");
+            localStorage.setItem("darkMode", "enabled");
+            toggle.innerText = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            toggle.innerText = "🌙";
 
-if (document.body.classList.contains("dark")) {
-    localStorage.setItem("darkMode", "enabled");
-    toggle.innerText = "☀️";
-} else {
-    localStorage.setItem("darkMode", "disabled");
-    toggle.innerText = "🌙";
-
-    // 🔥 RESET BACKGROUND (VERY IMPORTANT)
-    if (home) {
-        home.style.background = "";
-    }
-}
-
+            // Reset background when exiting dark mode
+            if (home) {
+                home.style.background = "";
+            }
+        }
     });
 }
 
