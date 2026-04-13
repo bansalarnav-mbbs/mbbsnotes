@@ -50,17 +50,28 @@ margin: auto;
 
 /* NAVBAR */
 .navbar {
-position: sticky;
-top: 0;
-z-index: 1000;
+    position: sticky;
+    top: 12px; /* 🔥 floating effect */
+    z-index: 1000;
 
-background: rgba(255, 255, 255, 0.55);
-backdrop-filter: blur(18px);
+    width: 92%;
+    margin: auto;
 
-border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-radius: 14px;
 
-padding: 12px 0;
-transition: background 0.4s ease;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.08),
+        0 2px 6px rgba(0,0,0,0.05);
+
+    padding: 12px 0;
+
+    transition: all 0.35s ease;
 }
 
 .nav-container {
@@ -72,7 +83,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 
-padding: 0 16px;
+padding: 0 18px;
 }
 
 .logo {
@@ -124,6 +135,7 @@ padding: 60px 16px;
 text-align: center;
 border-bottom: 1px solid #e0d6c3;
 transition: border 0.4s ease;
+ margin-top: 10px;
 }
 
 .section h2 {
@@ -374,6 +386,11 @@ opacity: 1;
 
 .hamburger { display: block; }
 
+.navbar {
+    width: 94%;
+    top: 10px;
+}
+
 .nav-links {
 position: fixed;
 top: 70px;
@@ -498,7 +515,14 @@ body.dark .grid-card {
 
 /* NAVBAR */
 body.dark .navbar {
-  background: rgba(20,20,20,0.8);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.5),
+        0 2px 6px rgba(0,0,0,0.3);
 }
 
 /* MENU */
